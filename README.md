@@ -105,3 +105,7 @@ With async, we have to wait the state gatter the information (could be useful fo
 
 ### Default Layout
 You can create reusable components for common layouts, like the default (usually the home), overlay, etc…
+
+## Built with
+* [Expo](https://expo.io/) - Make easier to create React Native Apps
+* [React Navigation](https://reactnavigation.org/) - Simple way to create routes
