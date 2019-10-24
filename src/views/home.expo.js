@@ -1,10 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { Text, Button } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 import DefaultPage from '../hoc/DefaultPage';
 import DefaultLayout from '../components/layout/DefaultLayout';
+import Modal from '../components/Modal';
+
+function ModalTest({ state, setState }) {
+    return (
+        <Modal
+            title="Modal"
+            state={ state }
+            close={ () => setState(false) }
+        >
+            <View>
+                <Text>Hello :D</Text>
+                <Button
+                    title="Close Modal"
+                    onPress={
+                        () => setState(false)
+                    }
+                />
+            </View>
+        </Modal>
+    );
+}
 
 function Page(props) {
+    const [ modalState, useModalState ] = useState(false);
     const [ loader, useLoader ] = useState(true);
 
     // Wait for asyncInitialProps to remove loader
@@ -26,6 +48,16 @@ function Page(props) {
                     }
                 }
             />
+
+            <Button
+                title="Test modal"
+                onPress={
+                    () => {
+                        useModalState(true);
+                    }
+                }
+            />
+            <ModalTest state={ modalState } setState={ useModalState } />
         </DefaultLayout>
     );
 };
